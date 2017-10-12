@@ -1,6 +1,8 @@
 # Learn Blockchains by Building One
 
-This is the source code for my post on [Building a Blockchain](https://medium.com/p/117428612f46). 
+This is the source code for Daniel van Flymen's post on [Building a Blockchain](https://medium.com/p/117428612f46).
+
+The Blockchain Charlotte devs are planning on using this fork as a learning tool and extending the functionality to further match production worthy blockchains.  Please open an issue with anything that you may want to implement or see implemented as part of the meetup group.
 
 ## Installation
 
