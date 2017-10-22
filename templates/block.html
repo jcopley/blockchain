@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>BlockChain Charlotte</h1>
+<h2>Unblocked Transactions</h2>
+<p>There are {{ trans['total_transaction'] }} transactions to be mined.</p>
+<table>
+    <tr>
+        <th>Sender</th>
+        <th>Recipient</th>
+        <th>Amount</th>
+    </tr>
+    {% for tran in trans['transactions'] %}
+        <tr>
+            <td>{{ tran['sender'] }}</td>
+            <td>{{ tran['recipient'] }}</td>
+            <td align="right">{{ tran['amount'] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<h2>Raw Transactions</h2>
+{{ trans }}
+</body>
+</html>

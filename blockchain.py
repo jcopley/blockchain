@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 from uuid import uuid4
 
 import requests
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 
 class Blockchain(object):
@@ -217,6 +217,22 @@ def mine():
     return jsonify(response), 200
 
 
+@app.route('/transactions', methods=['GET'])
+def get_transactions():
+    response = {
+        'transactions': list(blockchain.current_transactions),
+        'total_transaction': len(blockchain.current_transactions)
+    }
+    return render_template('block.html',trans=response)
+
+@app.route('/transactions/raw', methods=['GET'])
+def get_raw_transactions():
+    response = {
+        'transactions': list(blockchain.current_transactions),
+        'total_transaction': len(blockchain.current_transactions)
+    }
+    return jsonify(response), 200
+
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
     values = request.get_json()
@@ -241,6 +257,15 @@ def full_chain():
     }
     return jsonify(response), 200
 
+
+@app.route('/nodes', methods=['GET'])
+def list_nodes():
+
+    response = {
+        'nodes': list(blockchain.nodes),
+        'total_nodes': len(blockchain.nodes)
+    }
+    return jsonify(response), 200
 
 @app.route('/nodes/register', methods=['POST'])
 def register_nodes():
